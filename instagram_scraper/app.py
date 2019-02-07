@@ -1228,7 +1228,7 @@ def main():
 
     if args.tag:
         scraper.scrape_hashtag()
-    elif args.comment:
+    elif args.comments:
         scraper.scrape_hashtag()
     elif args.location:
         scraper.scrape_location()
