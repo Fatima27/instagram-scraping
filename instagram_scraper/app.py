@@ -700,11 +700,11 @@ class InstagramScraper(object):
                 media_exec.submit(self.worker_wrapper, self.__get_location, item)
 
             if self.comments:
-                item['tags']=tags
+                item['username']=username
                 item['comments'] = {'data': list(self.query_comments_gen(item['shortcode']))}
 
             if self.media_metadata or self.comments or self.include_location:
-                item['tags']=tags
+                item['username']=username
                 self.posts.append(item)
 
             iter = iter + 1
@@ -1227,6 +1227,8 @@ def main():
     scraper.login()
 
     if args.tag:
+        scraper.scrape_hashtag()
+    elif args.comment:
         scraper.scrape_hashtag()
     elif args.location:
         scraper.scrape_location()
